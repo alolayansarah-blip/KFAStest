@@ -1,2 +1,2 @@
-web: next start -p $PORT
+web: npm start
 
