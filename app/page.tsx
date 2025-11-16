@@ -19,11 +19,11 @@ export default function Home() {
         <Hero
           title={
             <>
-              <span className="text- animate-title-left inline-block">
+              <span className="text-white animate-title-left inline-block">
                 Timeless Legacy
               </span>
               <br />
-              <span className="text-animate-title-right inline-block">
+              <span className="text-white animate-title-right inline-block">
                 Innovative Future
               </span>
             </>
