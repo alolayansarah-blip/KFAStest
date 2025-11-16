@@ -65,19 +65,21 @@ export default function Hero({
             playsInline
             poster={videoPoster}
             className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => console.error("Video error:", e)}
+            onLoadedData={() => console.log("Video loaded successfully")}
           >
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           {/* Dynamic gradient overlay that follows mouse */}
           <motion.div
-            className="absolute inset-0 opacity-80 transition-opacity duration-1000"
+            className="absolute inset-0 opacity-50 transition-opacity duration-1000"
             style={{
-              background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 96, 27, 0.3) 0%, rgba(0, 0, 0, 0.7) 70%, rgba(0, 0, 0, 0.9) 100%)`,
+              background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 96, 27, 0.2) 0%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.6) 100%)`,
             }}
           />
           {/* Additional overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
         </motion.div>
       )}
 

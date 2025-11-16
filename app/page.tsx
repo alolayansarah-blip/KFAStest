@@ -32,7 +32,7 @@ export default function Home() {
           //   description="A fast, modern website built with Next.js, TypeScript, and Tailwind CSS. Converted from WordPress to a static, high-performance site."
           //   ctaText="Get Started"
           //   ctaLink="/contact"
-          video="/videos/hero-background.mp4" // Add your video path here
+          video="/Videos/hero-background.mp4" // Add your video path here
           videoPoster="/images/video-poster.jpg" // Optional: poster image
         />
 
