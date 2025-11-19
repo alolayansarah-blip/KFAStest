@@ -73,13 +73,13 @@ export default function Hero({
           </video>
           {/* Dynamic gradient overlay that follows mouse */}
           <motion.div
-            className="absolute inset-0 opacity-50 transition-opacity duration-1000"
+            className="absolute inset-0 opacity-40 transition-opacity duration-1000"
             style={{
-              background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 96, 27, 0.2) 0%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.6) 100%)`,
+              background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(236, 96, 27, 0.1) 0%, rgba(0, 0, 0, 0.3) 70%, rgba(0, 0, 0, 0.5) 100%)`,
             }}
           />
-          {/* Additional overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/50" />
+          {/* Additional overlay for depth - black overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />{" "}
         </motion.div>
       )}
 
@@ -158,7 +158,8 @@ export default function Hero({
 
       {/* Content with Motion Effects */}
       <div className="max-w-7xl mx-auto px-[5%] relative z-10 w-full">
-        <div className="flex flex-col items-center justify-center text-center min-h-[80vh]">
+        <div className="flex flex-col items-start justify-center text-left min-h-[80vh]">
+          {" "}
           {/* Subtitle with fade-in */}
           {subtitle && (
             <motion.p
@@ -172,20 +173,19 @@ export default function Hero({
               {subtitle}
             </motion.p>
           )}
-
           {/* Main Title with staggered animation */}
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-8 leading-[1.1] tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light mb-8 leading-[1.1] tracking-tight relative text-white"
           >
             {typeof title === "string" ? (
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="inline-block text-white"
+                className="inline-block text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] font-bold"
               >
                 {title}
               </motion.span>
@@ -209,7 +209,7 @@ export default function Hero({
                             delay: 0.5 + index * 0.2,
                             ease: [0.25, 0.46, 0.45, 0.94],
                           }}
-                          className="inline-block text-white"
+                          className="inline-block text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] font-bold"
                           whileHover={{ scale: 1.05 }}
                         >
                           {child}
@@ -225,13 +225,12 @@ export default function Hero({
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5 }}
-                className="inline-block text-white"
+                className="inline-block text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] drop-shadow-[0_0_20px_rgba(0,0,0,0.6)] font-bold"
               >
                 {title}
               </motion.span>
             )}
           </motion.h1>
-
           {/* Description with fade-in */}
           {description && (
             <motion.p

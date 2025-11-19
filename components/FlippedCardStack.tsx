@@ -5,22 +5,21 @@ import { motion } from "framer-motion";
 
 export default function FlippedCardStack() {
   const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
-
   const cards = [
     {
       color: "#EC601B",
-      front: "Card 1",
-      back: "Content for Card 1",
+      front: "Research Grants",
+      back: "Description of Research Grants",
     },
     {
       color: "#F7911E",
-      front: "Card 2",
-      back: "Content for Card 2",
+      front: "Learning and Development for Professionals",
+      back: "Description of Learning and Development for Professionals",
     },
     {
       color: "#FFAB40",
-      front: "Card 3",
-      back: "Content for Card 3",
+      front: "Scientific mission and fellowahip support",
+      back: "Description of Scientific mission and fellowahip support",
     },
   ];
 
@@ -53,7 +52,6 @@ export default function FlippedCardStack() {
               className="relative cursor-pointer w-full sm:w-auto"
               style={{
                 zIndex: flippedIndex === index ? 30 : 20 - index,
-                transformStyle: "preserve-3d",
               }}
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -71,7 +69,7 @@ export default function FlippedCardStack() {
               onMouseLeave={() => setFlippedIndex(null)}
             >
               <motion.div
-                className="relative w-full max-w-[280px] sm:w-56 md:w-64 h-40 sm:h-44 md:h-48 shadow-2xl mx-auto"
+                className="relative w-full max-w-[280px] sm:w-56 md:w-64 h-48 sm:h-52 md:h-56 shadow-2xl mx-auto rounded-2xl"
                 style={{
                   transformStyle: "preserve-3d",
                 }}
@@ -88,7 +86,7 @@ export default function FlippedCardStack() {
               >
                 {/* Front of card */}
                 <div
-                  className="absolute inset-0 flex items-center justify-center text-white text-lg font-bold"
+                  className="absolute inset-0 flex items-center justify-center text-center text-white text-lg "
                   style={{
                     backgroundColor: card.color,
                     backfaceVisibility: "hidden",
@@ -96,11 +94,13 @@ export default function FlippedCardStack() {
                     transform: "rotateY(0deg)",
                   }}
                 >
-                  {card.front}
+                  <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                    {card.front}
+                  </span>
                 </div>
                 {/* Back of card */}
                 <div
-                  className="absolute inset-0 flex items-center justify-center text-white text-base p-4"
+                  className="absolute inset-0 flex items-center justify-center text-center text-white text-sm font-normal p-4 leading-relaxed break-words"
                   style={{
                     backgroundColor: card.color,
                     backfaceVisibility: "hidden",
@@ -108,7 +108,9 @@ export default function FlippedCardStack() {
                     transform: "rotateY(180deg)",
                   }}
                 >
-                  {card.back}
+                  <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                    {card.back}
+                  </div>
                 </div>
               </motion.div>
             </motion.div>

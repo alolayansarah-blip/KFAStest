@@ -273,8 +273,8 @@ export default function ExploreOurWork() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              Showcase the key areas of our research ecosystem and the impact we
-              generate.
+              {/* Showcase the key areas of our research ecosystem and the impact we
+              generate. */}
             </motion.p>
 
             {/* Icons Grid */}

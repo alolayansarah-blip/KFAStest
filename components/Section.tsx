@@ -21,7 +21,7 @@ export default function Section({
               <p className="text-lg text-gray-600 mb-4">{subtitle}</p>
             )}
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-light text-gray-900 tracking-tight">
                 {title}
               </h2>
             )}

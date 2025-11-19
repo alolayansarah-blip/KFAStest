@@ -70,20 +70,51 @@ export default function MinimalCallToAction() {
     const defaultClasses = "font-light leading-tight tracking-tight";
     const combinedClasses = className
       ? `${defaultClasses} ${className}`
-      : `text-2xl sm:text-3xl lg:text-4xl xl:text-5xl ${defaultClasses}`;
+      : `text-3xl lg:text-4xl xl:text-5xl ${defaultClasses}`;
+
+    // Split text into words to prevent breaking within words
+    const words = text.split(" ");
+    let currentIndex = 0;
 
     return (
-      <h2 ref={headingRef} className={combinedClasses}>
-        {text.split("").map((letter, index) => (
-          <span
-            key={index}
-            className={`inline-block transition-colors duration-200 ${
-              index < visibleLetters ? "text-[#EC601B]" : "text-gray-900"
-            }`}
-          >
-            {letter === " " ? "\u00A0" : letter}
-          </span>
-        ))}
+      <h2
+        ref={headingRef}
+        className={`${combinedClasses} break-normal whitespace-normal text-justify`}
+        style={{ wordBreak: "normal", overflowWrap: "normal" }}
+      >
+        {words.map((word, wordIndex) => {
+          const wordStartIndex = currentIndex;
+          const wordLetters = word.split("");
+          const wordEndIndex = currentIndex + wordLetters.length;
+          currentIndex = wordEndIndex + 1; // +1 for the space
+
+          return (
+            <span
+              key={wordIndex}
+              className="inline-block whitespace-nowrap"
+              style={{ whiteSpace: "nowrap" }}
+            >
+              {wordLetters.map((letter, letterIndex) => {
+                const globalIndex = wordStartIndex + letterIndex;
+                return (
+                  <span
+                    key={letterIndex}
+                    className={`inline-block transition-colors duration-200 ${
+                      globalIndex < visibleLetters
+                        ? "text-[#EC601B]"
+                        : "text-gray-900"
+                    }`}
+                  >
+                    {letter}
+                  </span>
+                );
+              })}
+              {wordIndex < words.length - 1 && (
+                <span className="inline-block">{"\u00A0"}</span>
+              )}
+            </span>
+          );
+        })}
       </h2>
     );
   };
@@ -144,7 +175,7 @@ export default function MinimalCallToAction() {
                 }`}
                 style={{ transitionDelay: "0.1s" }}
               >
-                <AnimatedHeading text="The Kuwait Foundation for the Advancement of Sciences" />
+                <AnimatedHeading text="The Kuwait Foundation for the Advancement of Sciences (KFAS), a private non-profit organization" />
               </div>
 
               <div
@@ -167,12 +198,15 @@ export default function MinimalCallToAction() {
                 style={{ transitionDelay: "0.5s" }}
               >
                 <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl">
-                  A private non-profit organization dedicated to fostering
-                  science, technology, and innovation to address national
-                  challenges. Our unique governance model, with the Board of
-                  Directors chaired by the Amir of the State of Kuwait, ensures
-                  sustainable impact through strategic partnerships and
-                  innovative programs.
+                  The Foundation's efforts toward fostering STI to address
+                  national challenges first began through the pledge made by the
+                  private sector shareholding companies to fund the Foundation
+                  based on a set percentage of their annual profits — currently
+                  at one percent — as well as through the incorporation of a
+                  unique governance modality, in which the Board of Directors is
+                  chaired and appointed by the Amir of the State of Kuwait.
+                  Today, KFAS's impact is prominently embedded within the
+                  country's scientific and technological accomplishments and ...
                 </p>
               </div>
             </div>
@@ -216,13 +250,13 @@ export default function MinimalCallToAction() {
                   <div className="w-1 h-12 bg-[#EC601B]"></div>
                   <AnimatedHeading
                     text="Our Vision"
-                    className="text-3xl lg:text-4xl"
+                    className="text-2xl lg:text-3xl"
                   />
                 </div>
               </div>
-              <p className="text-lg text-gray-600 leading-relaxed font-light pl-5">
-                To be a global leader in purposeful innovation—designing
-                solutions that are intuitive, sustainable, and profoundly human.
+              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-l">
+                Our vision is to advance science, technology, and innovation for
+                a resilient, thriving, and sustainable future.
               </p>
             </div>
 
@@ -240,14 +274,14 @@ export default function MinimalCallToAction() {
                   <div className="w-1 h-12 bg-[#EC601B]"></div>
                   <AnimatedHeading
                     text="Our Mission"
-                    className="text-3xl lg:text-4xl"
+                    className="text-2xl lg:text-3xl"
                   />
                 </div>
               </div>
-              <p className="text-lg text-gray-600 leading-relaxed font-light pl-5">
-                To create simple, meaningful, and future-ready solutions that
-                empower people and organizations to grow with confidence and
-                clarity.
+              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-l">
+                Our mission is to pursue scientific excellence to tackle
+                national challenges through a prominent science, technology, and
+                innovation model.
               </p>
             </div>
           </div>

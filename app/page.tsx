@@ -6,9 +6,9 @@ import StatsCounter from "@/components/StatsCounter";
 import SocialShareMenu from "@/components/SocialShareMenu";
 import FlippedCardStack from "@/components/FlippedCardStack";
 import ExploreOurWork from "@/components/ExploreOurWork";
+import LogoShowcase from "@/components/LogoShowcase";
 import OurImpactStories from "@/components/OurImpactStories";
 import InstagramFeed from "@/components/InstagramFeed";
-import LatestNews from "@/components/LatestNews";
 
 export default function Home() {
   return (
@@ -19,11 +19,18 @@ export default function Home() {
         <Hero
           title={
             <>
-              <span className="text-white animate-title-left inline-block">
+              {/* <span className="text-white animate-title-left inline-block">
                 Timeless Legacy
               </span>
               <br />
               <span className="text-white animate-title-right inline-block">
+                Innovative Future
+              </span> */}
+              <span className="text-[white] animate-title-left inline-block">
+                Timeless Legacy
+              </span>
+              <br />
+              <span className="text-[white] animate-title-right inline-block">
                 Innovative Future
               </span>
             </>
@@ -39,17 +46,19 @@ export default function Home() {
         <FlippedCardStack />
 
         <WhoWeAre />
+        <StatsCounter />
 
         <ExploreOurWork />
 
+        {/* <LogoShowcase /> */}
+
         <OurImpactStories />
+        <LogoShowcase />
+        {/* <StatsCounter /> */}
 
-        <StatsCounter />
-
-        <LatestNews />
         <InstagramFeed />
       </main>
-      <Footer />
+      <Footer logo="/image/logo.png" logoText="KFAS" />
     </>
   );
 }
