@@ -106,7 +106,7 @@ export default function MinimalCounterSection() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-[5%] grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 relative z-10">
         {/* Left Text Content */}
         <div className="flex flex-col justify-center">
           <h3 className="text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight leading-tight mb-6 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">

@@ -156,8 +156,48 @@ export default function Hero({
         </div>
       )}
 
+      {/* TimelessEn.png - Left Side */}
+      <motion.div
+        initial={{ opacity: 0, x: -100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 1.2,
+          delay: 0.6,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        className="absolute left-[5%] top-0 bottom-0 flex items-center justify-start z-10 pointer-events-none"
+      >
+        <div className="relative -translate-y-4 sm:translate-y-0 md:translate-y-0 lg:translate-y-10">
+          <img
+            src="/image/TimelessEn.png"
+            alt="Timeless Legacy - Innovative Future"
+            className="w-auto h-40 sm:h-52 md:h-64 lg:h-80 xl:h-96 2xl:h-[28rem] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+          />
+        </div>
+      </motion.div>
+
+      {/* TimelessAr.png - Right Side */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{
+          duration: 1.2,
+          delay: 0.8,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        className="absolute right-[5%] top-0 bottom-0 flex items-center justify-end z-10 pointer-events-none"
+      >
+        <div className="relative -translate-y-4 sm:translate-y-0 md:translate-y-0 lg:translate-y-10">
+          <img
+            src="/image/TimelessAr.png"
+            alt="إرث راسخ - مستقبل مبتكر"
+            className="w-auto h-40 sm:h-52 md:h-64 lg:h-80 xl:h-96 2xl:h-[28rem] object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+          />
+        </div>
+      </motion.div>
+
       {/* Content with Motion Effects */}
-      <div className="max-w-7xl mx-auto px-[5%] relative z-10 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 relative z-10 w-full">
         <div className="flex flex-col items-start justify-center text-left min-h-[80vh]">
           {" "}
           {/* Subtitle with fade-in */}

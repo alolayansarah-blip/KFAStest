@@ -75,7 +75,7 @@ export default function OurImpactStories() {
         <div className="absolute bottom-1/3 left-1/3 w-[450px] h-[450px] bg-[#F7911E]/8 rounded-full blur-3xl"></div>
         <div className="absolute top-0 right-1/3 w-[350px] h-[350px] bg-[#FFAB40]/7 rounded-full blur-3xl"></div>
       </div>
-      <div className="max-w-7xl mx-auto px-[5%]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         {/* Header */}
         <motion.div
           className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 lg:mb-16 gap-6"

@@ -1,25 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 export default function FlippedCardStack() {
-  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
   const cards = [
     {
       color: "#EC601B",
       front: "Research Grants",
-      back: "Description of Research Grants",
     },
     {
-      color: "#F7911E",
+      color: "#EC601B",
       front: "Learning and Development for Professionals",
-      back: "Description of Learning and Development for Professionals",
     },
     {
-      color: "#FFAB40",
+      color: "#EC601B",
       front: "Scientific mission and fellowahip support",
-      back: "Description of Scientific mission and fellowahip support",
     },
   ];
 
@@ -41,17 +37,17 @@ export default function FlippedCardStack() {
         <div className="absolute bottom-1/3 left-1/3 w-[350px] h-[350px] bg-[#EC601B]/7 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-[5%] z-10 py-4 sm:py-6 lg:py-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 z-10 py-4 sm:py-6 lg:py-8">
         <div
           className="relative flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-4 lg:gap-4"
-          style={{ minHeight: "280px", perspective: "1000px" }}
+          style={{ minHeight: "280px" }}
         >
           {cards.map((card, index) => (
             <motion.div
               key={index}
               className="relative cursor-pointer w-full sm:w-auto"
               style={{
-                zIndex: flippedIndex === index ? 30 : 20 - index,
+                zIndex: 20 - index,
               }}
               initial={{ opacity: 0, y: 50, scale: 0.8 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -65,52 +61,23 @@ export default function FlippedCardStack() {
                 y: -10,
                 transition: { duration: 0.3 },
               }}
-              onMouseEnter={() => setFlippedIndex(index)}
-              onMouseLeave={() => setFlippedIndex(null)}
             >
               <motion.div
                 className="relative w-full max-w-[280px] sm:w-56 md:w-64 h-48 sm:h-52 md:h-56 shadow-2xl mx-auto rounded-2xl"
-                style={{
-                  transformStyle: "preserve-3d",
-                }}
-                animate={{
-                  rotateY: flippedIndex === index ? 180 : 0,
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: "easeInOut",
-                }}
                 whileHover={{
                   boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
                 }}
               >
                 {/* Front of card */}
                 <div
-                  className="absolute inset-0 flex items-center justify-center text-center text-white text-lg "
+                  className="absolute inset-0 flex items-center justify-center text-center text-white text-lg rounded-2xl"
                   style={{
                     backgroundColor: card.color,
-                    backfaceVisibility: "hidden",
-                    WebkitBackfaceVisibility: "hidden",
-                    transform: "rotateY(0deg)",
                   }}
                 >
                   <span className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
                     {card.front}
                   </span>
-                </div>
-                {/* Back of card */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center text-center text-white text-sm font-normal p-4 leading-relaxed break-words"
-                  style={{
-                    backgroundColor: card.color,
-                    backfaceVisibility: "hidden",
-                    WebkitBackfaceVisibility: "hidden",
-                    transform: "rotateY(180deg)",
-                  }}
-                >
-                  <div className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
-                    {card.back}
-                  </div>
                 </div>
               </motion.div>
             </motion.div>

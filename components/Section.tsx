@@ -14,7 +14,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <section id={id} className={`py-24 lg:py-32 ${className}`}>
-      <div className="container mx-auto px-[5%]">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20">
         {(title || subtitle) && (
           <div className="text-center mb-12">
             {subtitle && (

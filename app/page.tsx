@@ -26,13 +26,13 @@ export default function Home() {
               <span className="text-white animate-title-right inline-block">
                 Innovative Future
               </span> */}
-              <span className="text-[white] animate-title-left inline-block">
+              {/* <span className="text-[white] animate-title-left inline-block">
                 Timeless Legacy
               </span>
               <br />
               <span className="text-[white] animate-title-right inline-block">
                 Innovative Future
-              </span>
+              </span> */}
             </>
           }
           //   subtitle="Modern Web Solutions"

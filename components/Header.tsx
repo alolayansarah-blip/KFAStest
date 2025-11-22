@@ -12,7 +12,7 @@ interface HeaderProps {
 
 export default function Header({
   logo,
-  logoText = "KFastest",
+  logoText = "KFAS",
   navItems = [],
 }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -185,10 +185,11 @@ export default function Header({
   return (
     <header
       className={`w-full fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        isScrolled ? "bg-white" : "bg-transparent"
+        isScrolled ? "bg-white" : "md:bg-transparent bg-white"
       }`}
     >
-      <nav className="w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-4">
+      {/* Desktop Header */}
+      <nav className="hidden md:block w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
@@ -213,7 +214,7 @@ export default function Header({
 
           {/* Desktop Navigation */}
           <div
-            className={`hidden md:flex items-center transition-all duration-300 ${
+            className={`flex items-center transition-all duration-300 ${
               isScrolled ? "space-x-2" : "space-x-1"
             }`}
           >
@@ -320,7 +321,6 @@ export default function Header({
                   onClick={() => {
                     setCurrentLanguage("en");
                     setIsLangDropdownOpen(false);
-                    // Add your language change logic here
                   }}
                   className="w-full text-left px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-2"
                 >
@@ -331,7 +331,6 @@ export default function Header({
                   onClick={() => {
                     setCurrentLanguage("ar");
                     setIsLangDropdownOpen(false);
-                    // Add your language change logic here
                   }}
                   className="w-full text-left px-4 py-2 text-white/90 hover:text-white hover:bg-white/10 transition-colors flex items-center space-x-2"
                 >
@@ -341,46 +340,58 @@ export default function Header({
               </div>
             )}
           </div>
+        </div>
+      </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`md:hidden p-2 transition-colors ${
-              isScrolled ? "text-black" : "text-white"
-            }`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+      {/* Mobile Header */}
+      <nav className="md:hidden w-full bg-white shadow-sm">
+        <div className="flex items-center justify-between px-4 py-3">
+          {/* Logo in Center */}
+          <div className="flex-1" />
+          <Link href="/" className="flex items-center justify-center flex-1">
+            <img
+              src="/image/logo2.png"
+              alt={logoText}
+              className="h-14 w-auto"
+            />
+          </Link>
+
+          {/* Hamburger Menu on Right */}
+          <div className="flex-1 flex items-center justify-end">
+            {/* Hamburger Button */}
+            <button
+              className="p-2 text-black"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
             >
-              {isMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isMenuOpen ? (
+                  <path d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4">
+          <div className="bg-white border-t border-gray-200 px-4 pb-4">
             {defaultNavItems.map((item) => (
               <div key={item.href}>
                 {item.children ? (
                   <>
                     <button
-                      className={`w-full flex items-center justify-between py-2 font-medium transition-colors ${
-                        isScrolled
-                          ? "text-black hover:text-gray-700"
-                          : "text-white/90 hover:text-white"
-                      }`}
+                      className="w-full flex items-center justify-between py-3 font-medium text-black hover:text-gray-700 transition-colors"
                       onClick={() =>
                         setOpenMobileDropdown(
                           openMobileDropdown === item.href ? null : item.href
@@ -403,16 +414,12 @@ export default function Header({
                       </svg>
                     </button>
                     {openMobileDropdown === item.href && (
-                      <div className="pl-4 mt-2 space-y-2">
+                      <div className="pl-4 space-y-1 bg-gray-50 rounded-lg py-2">
                         {item.children.map((child) => (
                           <Link
                             key={child.href}
                             href={child.href}
-                            className={`block py-2 font-medium transition-colors ${
-                              isScrolled
-                                ? "text-black/70 hover:text-black"
-                                : "text-white/70 hover:text-white"
-                            }`}
+                            className="block py-2 px-3 font-medium text-black/70 hover:text-black hover:bg-gray-100 rounded transition-colors"
                             onClick={() => {
                               setIsMenuOpen(false);
                               setOpenMobileDropdown(null);
@@ -427,11 +434,7 @@ export default function Header({
                 ) : (
                   <Link
                     href={item.href}
-                    className={`block py-2 font-medium transition-colors ${
-                      isScrolled
-                        ? "text-black/90 hover:text-black"
-                        : "text-white/90 hover:text-white"
-                    }`}
+                    className="block py-3 font-medium text-black/90 hover:text-black transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -439,6 +442,59 @@ export default function Header({
                 )}
               </div>
             ))}
+
+            {/* Language Switcher - Mobile */}
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <div className="relative">
+                <button
+                  onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+                  className="w-full flex items-center justify-between py-3 font-medium text-black hover:text-gray-700 transition-colors"
+                  aria-label="Change language"
+                >
+                  <span className="flex items-center space-x-2">
+                    <span className="uppercase">{currentLanguage}</span>
+                    <span>Language</span>
+                  </span>
+                  <svg
+                    className={`w-4 h-4 transition-transform ${
+                      isLangDropdownOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {isLangDropdownOpen && (
+                  <div className="pl-4 mt-2 space-y-1 bg-gray-50 rounded-lg py-2">
+                    <button
+                      onClick={() => {
+                        setCurrentLanguage("en");
+                        setIsLangDropdownOpen(false);
+                      }}
+                      className="w-full text-left py-2 px-3 font-medium text-black/70 hover:text-black hover:bg-gray-100 rounded transition-colors flex items-center space-x-2"
+                    >
+                      <span>🇬🇧</span>
+                      <span>English</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setCurrentLanguage("ar");
+                        setIsLangDropdownOpen(false);
+                      }}
+                      className="w-full text-left py-2 px-3 font-medium text-black/70 hover:text-black hover:bg-gray-100 rounded transition-colors flex items-center space-x-2"
+                    >
+                      <span>🇰🇼</span>
+                      <span>العربية</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         )}
       </nav>

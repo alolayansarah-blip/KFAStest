@@ -63,7 +63,7 @@ export default function LogoShowcase() {
         <div className="absolute bottom-0 right-1/4 w-[450px] h-[450px] bg-gradient-radial from-[#FFAB40]/6 via-[#F7911E]/3 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-[5%] relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 relative z-10">
         {/* Section Title */}
         <motion.div
           className="text-center mb-12 lg:mb-16"

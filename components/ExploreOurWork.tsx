@@ -186,7 +186,7 @@ export default function ExploreOurWork() {
         <div className="absolute right-1/4 bottom-0 w-[300px] h-[300px] bg-[#FFAB40]/8 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-[5%] relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 relative z-10">
         <div className="flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12">
           {/* Left Section - Full Height Image */}
           <motion.div
