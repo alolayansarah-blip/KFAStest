@@ -352,7 +352,7 @@ export default function Header({
             <img
               src="/image/logo2.png"
               alt={logoText}
-              className="h-14 w-auto"
+              className="h-20 w-auto"
             />
           </Link>
 
