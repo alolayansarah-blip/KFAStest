@@ -110,7 +110,7 @@ export default function MinimalCounterSection() {
         {/* Left Text Content */}
         <div className="flex flex-col justify-center">
           <h3 className="text-3xl lg:text-4xl xl:text-5xl font-light tracking-tight leading-tight mb-6 text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
-            Shaping Kuwait&#39;s Future through Science & Innovation
+            50 years journey supporting science, technology, and innovation
           </h3>
           <div className="w-24 h-1 bg-gradient-to-r from-white/80 via-white/60 to-transparent rounded-full"></div>
         </div>

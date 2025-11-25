@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function MinimalCallToAction() {
   const [isVisible, setIsVisible] = useState(false);
@@ -164,30 +165,42 @@ export default function MinimalCallToAction() {
       <div className="max-w-7xl mx-auto px-[5%] relative z-10">
         {/* Main Content Section */}
         <div className="pt-12 sm:pt-8 lg:pt-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-            {/* Left Section: Text Content */}
+          <div className="max-w-4xl mx-auto">
+            {/* Text Content */}
             <div className="space-y-8">
-              <div
-                className={`transition-all duration-1000 ease-out ${
+              <motion.div
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={
                   isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: "0.1s" }}
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 30, scale: 0.95 }
+                }
+                transition={{
+                  duration: 0.8,
+                  delay: 0.1,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                className="relative"
               >
-                <AnimatedHeading text="The Kuwait Foundation for the Advancement of Sciences (KFAS), a private non-profit organization" />
-              </div>
+                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-[#EC601B] via-[#F7911E] to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <AnimatedHeading text="Our vision and mission for the 2025-29 Strategy:" />
+              </motion.div>
 
-              <div
-                className={`transition-all duration-1000 ease-out ${
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={
                   isVisible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: "0.3s" }}
+                    ? { opacity: 1, width: "auto" }
+                    : { opacity: 0, width: 0 }
+                }
+                transition={{
+                  duration: 0.8,
+                  delay: 0.3,
+                  ease: "easeOut",
+                }}
               >
-                <div className="w-20 h-px bg-gradient-to-r from-[#EC601B] to-transparent"></div>
-              </div>
+                <div className="w-24 h-1 bg-gradient-to-r from-[#EC601B] via-[#F7911E] to-transparent rounded-full shadow-lg shadow-[#EC601B]/30"></div>
+              </motion.div>
 
               <div
                 className={`transition-all duration-1000 ease-out ${
@@ -197,7 +210,7 @@ export default function MinimalCallToAction() {
                 }`}
                 style={{ transitionDelay: "0.5s" }}
               >
-                <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light max-w-2xl">
+                <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light">
                   The Foundation's efforts toward fostering STI to address
                   national challenges first began through the pledge made by the
                   private sector shareholding companies to fund the Foundation
@@ -210,80 +223,132 @@ export default function MinimalCallToAction() {
                 </p>
               </div>
             </div>
-
-            {/* Right Section: Image */}
-            <div
-              className={`transition-all duration-1000 ease-out ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-8"
-              }`}
-              style={{ transitionDelay: "0.7s" }}
-            >
-              <div className="relative">
-                <div className="aspect-[4/3] overflow-hidden rounded-lg">
-                  <img
-                    src="/image/who2.jpg"
-                    alt="Kuwait Foundation"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
         {/* Mission and Vision Section */}
-        <div className="pt-8 lg:pt-12 pb-8 lg:pb-12 border-t border-gray-100">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
+        <div className="pt-8 lg:pt-16 pb-8 lg:pb-12">
+          <div className="flex flex-col max-w-4xl mx-auto">
             {/* Vision */}
-            <div
-              className={`space-y-6 transition-all duration-1000 ease-out ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 -translate-x-8"
-              }`}
-              style={{ transitionDelay: "0.9s" }}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.9,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="group relative"
             >
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-1 h-12 bg-[#EC601B]"></div>
-                  <AnimatedHeading
-                    text="Our Vision"
-                    className="text-2xl lg:text-3xl"
-                  />
+              <div className="relative bg-gradient-to-br from-white to-gray-50/50 rounded-t-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 border-x border-t border-gray-100 hover:border-[#EC601B]/20 overflow-hidden hover:scale-[1.03] origin-top z-10 hover:z-20">
+                {/* Decorative gradient background */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-radial from-[#EC601B]/5 via-[#F7911E]/3 to-transparent rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                {/* Animated accent bar */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  animate={isVisible ? { scaleY: 1 } : { scaleY: 0 }}
+                  transition={{ duration: 0.6, delay: 1.1, ease: "easeOut" }}
+                  className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#EC601B] via-[#F7911E] to-[#FFAB40] rounded-l-2xl"
+                ></motion.div>
+
+                <div className="space-y-6 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#EC601B] to-[#F7911E] flex items-center justify-center shadow-lg shadow-[#EC601B]/30">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                    </div>
+                    <AnimatedHeading
+                      text="Our Vision"
+                      className="text-2xl lg:text-3xl font-semibold"
+                    />
+                  </div>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={
+                      isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    }
+                    transition={{ duration: 0.6, delay: 1.3 }}
+                    className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light"
+                  >
+                    Our vision is to advance science, technology, and innovation
+                    for a resilient, thriving, and sustainable future.
+                  </motion.p>
                 </div>
               </div>
-              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-l">
-                Our vision is to advance science, technology, and innovation for
-                a resilient, thriving, and sustainable future.
-              </p>
-            </div>
+            </motion.div>
+
+            {/* White Divider */}
+            <div className="h-[1px] bg-white/80"></div>
 
             {/* Mission */}
-            <div
-              className={`space-y-6 transition-all duration-1000 ease-out ${
-                isVisible
-                  ? "opacity-100 translate-x-0"
-                  : "opacity-0 translate-x-8"
-              }`}
-              style={{ transitionDelay: "1.1s" }}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{
+                duration: 0.8,
+                delay: 1.1,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="group relative"
             >
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-1 h-12 bg-[#EC601B]"></div>
-                  <AnimatedHeading
-                    text="Our Mission"
-                    className="text-2xl lg:text-3xl"
-                  />
+              <div className="relative bg-gradient-to-br from-white to-gray-50/50 rounded-b-2xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 border-x border-b border-gray-100 hover:border-[#EC601B]/20 overflow-hidden hover:scale-[1.03] origin-bottom z-10 hover:z-20">
+                {/* Decorative gradient background */}
+                <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-radial from-[#F7911E]/5 via-[#FFAB40]/3 to-transparent rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                {/* Animated accent bar */}
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  animate={isVisible ? { scaleY: 1 } : { scaleY: 0 }}
+                  transition={{ duration: 0.6, delay: 1.3, ease: "easeOut" }}
+                  className="absolute right-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#F7911E] via-[#FFAB40] to-[#FFC107] rounded-r-2xl"
+                ></motion.div>
+
+                <div className="space-y-6 relative z-10">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#F7911E] to-[#FFAB40] flex items-center justify-center shadow-lg shadow-[#F7911E]/30">
+                      <svg
+                        className="w-6 h-6 text-white"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <AnimatedHeading
+                      text="Our Mission"
+                      className="text-2xl lg:text-3xl font-semibold"
+                    />
+                  </div>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={
+                      isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }
+                    }
+                    transition={{ duration: 0.6, delay: 1.5 }}
+                    className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light"
+                  >
+                    Our mission is to pursue scientific excellence to tackle
+                    national challenges through a prominent science, technology,
+                    and innovation model.
+                  </motion.p>
                 </div>
               </div>
-              <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-l">
-                Our mission is to pursue scientific excellence to tackle
-                national challenges through a prominent science, technology, and
-                innovation model.
-              </p>
-            </div>
+            </motion.div>
           </div>
         </div>
 
