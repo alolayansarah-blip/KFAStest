@@ -227,11 +227,8 @@ export default function MinimalCallToAction() {
                 delay: 0.2,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-            >
-              <p className="text-sm lg:text-base font-medium text-[#EC601B] uppercase tracking-wider mb-0">
-                Who We Are
-              </p>
-            </motion.div>
+              className="group"
+            ></motion.div>
 
             {/* Main Title */}
             <motion.div
@@ -242,8 +239,14 @@ export default function MinimalCallToAction() {
                 delay: 0.3,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
+              className="group"
             >
-              <AnimatedHeading text="Our vision and mission for the 2025-2026 Strategy:" />
+              <div className="border-l-2 border-[#EC601B]/30 pl-4 py-2 transition-all duration-300 group-hover:border-[#EC601B] group-hover:pl-6">
+                <AnimatedHeading
+                  text="Kuwait Foundation for the Advancement of Sciences (KFAS)"
+                  className="text-[32px]"
+                />
+              </div>
             </motion.div>
 
             {/* Paragraph */}
@@ -256,7 +259,7 @@ export default function MinimalCallToAction() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
-              <p className="text-[1.125rem] text-gray-700 leading-[2.125rem] font-normal tracking-normal">
+              <p className="text-base text-gray-600 leading-relaxed">
                 The Foundation's efforts toward fostering STI to address
                 national challenges first began through the pledge made by the
                 private sector shareholding companies to fund the Foundation
@@ -268,50 +271,85 @@ export default function MinimalCallToAction() {
             </motion.div>
 
             {/* Vision and Mission Icon Boxes */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.7,
-                ease: [0.25, 0.46, 0.45, 0.94],
-              }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
               {/* Vision Icon Box */}
-              <div className="group">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={
+                  isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }
+                }
+                transition={{
+                  duration: 0.6,
+                  delay: 0.7,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                whileHover={{ y: -4 }}
+                className="group"
+              >
+                <div className="border-l-2 border-[#EC601B]/30 pl-4 py-2 transition-all duration-300 group-hover:border-[#EC601B] group-hover:pl-6">
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 0.8, duration: 0.4 }}
+                    className="text-xl font-bold text-gray-900 mb-2"
+                  >
                     Vision
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 0.9, duration: 0.4 }}
+                    className="text-sm text-gray-600 leading-relaxed"
+                  >
                     Our vision is to advance science, technology, and innovation
                     for a{" "}
                     <span className="font-medium text-[#EC601B]">
                       resilient, thriving, and sustainable future
                     </span>
                     .
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Mission Icon Box */}
-              <div className="group">
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={
+                  isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }
+                }
+                transition={{
+                  duration: 0.6,
+                  delay: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                whileHover={{ y: -4 }}
+                className="group"
+              >
+                <div className="border-l-2 border-[#F7911E]/30 pl-4 py-2 transition-all duration-300 group-hover:border-[#F7911E] group-hover:pl-6">
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 0.9, duration: 0.4 }}
+                    className="text-xl font-bold text-gray-900 mb-2"
+                  >
                     Mission
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  </motion.h3>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: 1.0, duration: 0.4 }}
+                    className="text-sm text-gray-600 leading-relaxed"
+                  >
                     Our mission is to pursue{" "}
                     <span className="font-medium text-[#F7911E]">
                       scientific excellence to tackle national challenges
                     </span>{" "}
                     through a prominent science, technology, and innovation
                     model.
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </div>
 
           {/* Right Container: Video */}
