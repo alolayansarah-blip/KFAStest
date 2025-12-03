@@ -39,6 +39,74 @@ export default function FlippedCardStack() {
         paddingBottom: "60px",
       }}
     >
+      {/* Science-themed Background Pattern - Connecting with WhoWeAre */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-[0.08]">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="molecular-pattern-cards"
+              x="0"
+              y="0"
+              width="150"
+              height="150"
+              patternUnits="userSpaceOnUse"
+            >
+              {/* Molecular structure circles - larger */}
+              <circle cx="40" cy="40" r="3" fill="#EC601B" opacity="0.4" />
+              <circle cx="110" cy="40" r="3" fill="#F7911E" opacity="0.4" />
+              <circle cx="75" cy="75" r="3" fill="#EC601B" opacity="0.4" />
+              <circle cx="40" cy="110" r="3" fill="#F7911E" opacity="0.4" />
+              <circle cx="110" cy="110" r="3" fill="#EC601B" opacity="0.4" />
+              {/* Connection lines - thicker */}
+              <line
+                x1="40"
+                y1="40"
+                x2="75"
+                y2="75"
+                stroke="#EC601B"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+              <line
+                x1="110"
+                y1="40"
+                x2="75"
+                y2="75"
+                stroke="#F7911E"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+              <line
+                x1="40"
+                y1="110"
+                x2="75"
+                y2="75"
+                stroke="#EC601B"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+              <line
+                x1="110"
+                y1="110"
+                x2="75"
+                y2="75"
+                stroke="#F7911E"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+            </pattern>
+          </defs>
+          <rect
+            width="100%"
+            height="100%"
+            fill="url(#molecular-pattern-cards)"
+          />
+        </svg>
+      </div>
+
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
           {cards.map((card, index) => (
