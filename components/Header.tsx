@@ -69,8 +69,8 @@ function Header({
             href: "/about",
             children: [
               { label: "Who We Are", href: "/about/who-we-are" },
-              { label: "history", href: "/about/history" },
-              { label: "Strategy", href: "/about/strategy" },
+              { label: " Our History", href: "/about/history" },
+              { label: " Our Strategy", href: "/about/strategy" },
               {
                 label: "Board of Directors",
                 href: "/about/board-of-directors",
@@ -78,10 +78,6 @@ function Header({
               {
                 label: "Execute Management ",
                 href: "/about/execute-management",
-              },
-              {
-                label: "Strategic Partnerships",
-                href: "/about/strategic-partnerships",
               },
             ],
           },
@@ -100,10 +96,9 @@ function Header({
                 href: "/research/Scientific-Missions",
               },
               {
-                label: "Conference Funds",
-                href: "/research/Conference-Funding",
+                label: "Scientific Conference Sponsorship",
+                href: "/research/scientific-conference-sponsorship",
               },
-              { label: "Outcomes", href: "/research/Outcomes" },
             ],
           },
           {
