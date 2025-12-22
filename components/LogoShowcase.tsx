@@ -37,7 +37,7 @@ export default function LogoShowcase() {
 
   const partners = [
     {
-      image: "/image/Impactstory2.png",
+      image: "/image/ImpactStory2.png",
       logo: "/image/logo6.png",
       name: "SABAH AL-AHMAD Center for Giftedness and Creativity",
       description:
