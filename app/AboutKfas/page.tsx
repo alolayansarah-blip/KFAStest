@@ -208,7 +208,6 @@ export default function AboutKfasPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="border-l-2 border-[#EC601B] pl-8"
               >
                 <p className="text-gray-600 leading-[1.9] text-base">
                   The Kuwait Foundation for the Advancement of Sciences (KFAS)
@@ -233,7 +232,6 @@ export default function AboutKfasPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="border-l-2 border-[#EC601B] pl-8"
               >
                 <p className="text-gray-600 leading-[1.9] text-base">
                   Through its prestigious prizes, KFAS not only celebrates the
