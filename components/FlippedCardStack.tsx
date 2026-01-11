@@ -34,7 +34,7 @@ function CardItem({ title, index }: Card & { index: number }) {
 
   return (
     <div
-      className={`relative h-44 ${getRoundedClasses()} p-0 ${shadowClass} ${dividerClass} bg-orange-500 md:hover:bg-orange-300 md:hover:scale-105 transition-all duration-300 md:cursor-pointer`}
+      className={`relative h-44 ${getRoundedClasses()} p-0 ${shadowClass} ${dividerClass} bg-orange-500 md:hover:bg-[#FFAB40] md:hover:scale-105 transition-all duration-300 md:cursor-pointer`}
     >
       <div className="flex flex-col h-full p-3 md:p-4 text-center justify-center items-center">
         <h3 className="text-white text-lg md:text-base font-semibold mb-2 md:mb-3 leading-snug md:leading-tight px-3 md:px-2 drop-shadow-lg [text-shadow:_2px_2px_4px_rgba(0,0,0,0.5)]">
