@@ -26,6 +26,7 @@ function Header({
   );
   const [currentLanguage, setCurrentLanguage] = useState("en");
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -196,10 +197,14 @@ function Header({
       }`}
     >
       {/* Desktop Header */}
-      <nav className="hidden md:block w-full max-w-[1400px] mx-auto px-4 md:px-6 lg:px-8 py-4">
-        <div className="flex items-center justify-between">
+      <nav className="hidden md:block w-full max-w-7xl mx-auto px-6 lg:px-8 py-4">
+        <div
+          className={`flex items-center justify-between ${
+            isScrolled || forceWhiteBackground ? "space-x-2" : "space-x-1"
+          }`}
+        >
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3 sm:space-x-4">
             {logo ? (
               <img
                 src={
@@ -207,7 +212,7 @@ function Header({
                 }
                 alt={logoText}
                 className={`w-auto transition-all duration-300 ${
-                  isScrolled || forceWhiteBackground ? "h-16" : "h-20"
+                  isScrolled || forceWhiteBackground ? "h-12" : "h-16"
                 }`}
               />
             ) : (
@@ -221,84 +226,173 @@ function Header({
                 {logoText}
               </span>
             )}
+
+            {/* Very thin divider */}
+            <div
+              className={`h-10 sm:h-12 w-px transition-all duration-300 ${
+                isScrolled || forceWhiteBackground
+                  ? "bg-gray-300"
+                  : "bg-white/30"
+              }`}
+            />
+
+            {/* 50 Years Anniversary Logo */}
+            <div className="relative flex items-center justify-center">
+              {/* Container for smooth transition */}
+              <div className="relative w-auto h-10 sm:h-12 flex items-center justify-center">
+                {/* White version (shown when not scrolled) */}
+                {isMounted ? (
+                  <motion.img
+                    src="/image/50.png"
+                    alt="50 Years"
+                    className="w-auto h-full object-contain"
+                    initial={{ opacity: 1, scale: 1 }}
+                    animate={{
+                      opacity: isScrolled || forceWhiteBackground ? 0 : 1,
+                      scale: isScrolled || forceWhiteBackground ? 0.8 : 1,
+                      y: isScrolled || forceWhiteBackground ? -5 : 0,
+                    }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    style={{
+                      filter: "drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2))",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src="/image/50.png"
+                    alt="50 Years"
+                    className="w-auto h-full object-contain"
+                    style={{
+                      filter: "drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2))",
+                      opacity: isScrolled || forceWhiteBackground ? 0 : 1,
+                    }}
+                  />
+                )}
+
+                {/* Gold version (shown when scrolled) - smaller size */}
+                {isMounted ? (
+                  <motion.img
+                    src="/image/50_gold.png"
+                    alt="50 Years Gold"
+                    className="absolute inset-0 w-auto h-8 sm:h-10 object-contain"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{
+                      opacity: isScrolled || forceWhiteBackground ? 1 : 0,
+                      scale: isScrolled || forceWhiteBackground ? 1 : 0.8,
+                      y: isScrolled || forceWhiteBackground ? 0 : 5,
+                    }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    style={{
+                      filter:
+                        isScrolled || forceWhiteBackground
+                          ? "brightness(1.1)"
+                          : "none",
+                    }}
+                  />
+                ) : (
+                  <img
+                    src="/image/50_gold.png"
+                    alt="50 Years Gold"
+                    className="absolute inset-0 w-auto h-8 sm:h-10 object-contain"
+                    style={{
+                      filter:
+                        isScrolled || forceWhiteBackground
+                          ? "brightness(1.1)"
+                          : "none",
+                      opacity: isScrolled || forceWhiteBackground ? 1 : 0,
+                    }}
+                  />
+                )}
+              </div>
+
+              {/* Animated glow effect when scrolled */}
+              {isMounted && (isScrolled || forceWhiteBackground) ? (
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{
+                    duration: 2.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-radial from-yellow-400/30 via-yellow-500/20 to-transparent rounded-full blur-2xl scale-150" />
+                </motion.div>
+              ) : null}
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div
-            className={`flex items-center transition-all duration-300 ${
-              isScrolled || forceWhiteBackground ? "space-x-2" : "space-x-1"
-            }`}
-          >
-            {defaultNavItems.map((item) => (
-              <div
-                key={item.href}
-                className="relative"
-                onMouseEnter={() => item.children && setOpenDropdown(item.href)}
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
-                {item.children ? (
-                  <span
-                    className={`hover:bg-[#EC601B] font-medium transition-all duration-300 flex items-center cursor-pointer px-3 py-1 ${
-                      openDropdown === item.href
-                        ? "bg-[#EC601B] text-white"
-                        : isScrolled || forceWhiteBackground
-                        ? "text-black hover:text-white"
-                        : "text-white/90 hover:text-white"
-                    } ${
-                      isScrolled || forceWhiteBackground
-                        ? "text-[15px]"
-                        : "text-base"
+          {defaultNavItems.map((item) => (
+            <div
+              key={item.href}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenDropdown(item.href)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              {item.children ? (
+                <span
+                  className={`hover:bg-[#EC601B] font-medium transition-all duration-300 flex items-center cursor-pointer px-3 py-1 ${
+                    openDropdown === item.href
+                      ? "bg-[#EC601B] text-white"
+                      : isScrolled || forceWhiteBackground
+                      ? "text-black hover:text-white"
+                      : "text-white/90 hover:text-white"
+                  } ${
+                    isScrolled || forceWhiteBackground
+                      ? "text-[15px]"
+                      : "text-base"
+                  }`}
+                >
+                  {item.label}
+                  <svg
+                    className={`ml-1 transition-all duration-300 ${
+                      isScrolled || forceWhiteBackground ? "w-3 h-3" : "w-4 h-4"
                     }`}
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    {item.label}
-                    <svg
-                      className={`ml-1 transition-all duration-300 ${
-                        isScrolled || forceWhiteBackground
-                          ? "w-3 h-3"
-                          : "w-4 h-4"
+                    <path d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+              ) : (
+                <Link
+                  href={item.href}
+                  className={`hover:bg-[#EC601B] font-medium transition-all duration-300 px-6 py-1 ${
+                    isScrolled
+                      ? "text-[15px] text-black hover:text-white"
+                      : "text-base text-white/90 hover:text-white"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )}
+              {item.children && openDropdown === item.href && (
+                <div className="absolute top-full left-0 mt-0 bg-[#EC601B] shadow-lg py-4 min-w-[280px] z-50">
+                  {item.children.map((child, index) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className={`block px-6 py-3 text-white hover:bg-white/20 transition-colors ${
+                        index < (item.children?.length ?? 0) - 1
+                          ? "border-b border-white/50"
+                          : ""
                       }`}
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
                     >
-                      <path d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={`hover:bg-[#EC601B] font-medium transition-all duration-300 px-6 py-1 ${
-                      isScrolled
-                        ? "text-[15px] text-black hover:text-white"
-                        : "text-base text-white/90 hover:text-white"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-                {item.children && openDropdown === item.href && (
-                  <div className="absolute top-full left-0 mt-0 bg-[#EC601B] shadow-lg py-4 min-w-[280px] z-50">
-                    {item.children.map((child, index) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={`block px-6 py-3 text-white hover:bg-white/20 transition-colors ${
-                          index < (item.children?.length ?? 0) - 1
-                            ? "border-b border-white/50"
-                            : ""
-                        }`}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
 
           {/* Language Switcher */}
           <div className="relative language-switcher">
@@ -367,13 +461,42 @@ function Header({
           <div className="flex-1" />
           <Link
             href="/"
-            className="flex items-center justify-center flex-1 transition-opacity hover:opacity-90"
+            className="flex items-center justify-center flex-1 gap-3 transition-opacity hover:opacity-90"
           >
             <img
               src="/image/logo2.png"
               alt={logoText}
               className="h-16 w-auto transition-all duration-300"
             />
+            {/* 50 Years Anniversary Logo - Mobile */}
+            <motion.div
+              className="relative flex items-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: { delay: 0.2, duration: 0.5 },
+              }}
+            >
+              <img
+                src="/image/50_gold.png"
+                alt="50 Years Gold"
+                className="h-12 w-auto transition-all duration-300"
+              />
+              {/* Subtle glow effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-yellow-500/30 to-yellow-400/20 rounded-full blur-lg -z-10"
+                animate={{
+                  opacity: [0.4, 0.7, 0.4],
+                  scale: [0.9, 1.1, 0.9],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.div>
           </Link>
 
           {/* Hamburger Menu on Right */}
