@@ -8,8 +8,6 @@ const roboto = Roboto({
   variable: "--font-roboto",
 });
 
-
-
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
@@ -17,9 +15,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "KFastest - Modern Web Solutions",
-  description:
-    "A fast, modern website built with Next.js, TypeScript, and Tailwind CSS",
+  title: "KFastest - Kuwait Foundation for the Advancement of Sciences",
+  description: "Kuwait Foundation for the Advancement of Sciences",
 };
 
 export default function RootLayout({
@@ -29,9 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${roboto.variable} ${poppins.variable}`}
-      >
+      <body className={`${roboto.variable} ${poppins.variable}`}>
         {children}
       </body>
     </html>
