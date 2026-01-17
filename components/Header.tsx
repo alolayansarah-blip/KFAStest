@@ -191,9 +191,7 @@ function Header({
   return (
     <header
       className={`w-full fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
-        isScrolled || forceWhiteBackground
-          ? "bg-white shadow-sm"
-          : "md:bg-transparent bg-white"
+        isScrolled || forceWhiteBackground ? "bg-[#EC601B]" : "bg-transparent"
       }`}
     >
       {/* Desktop Header */}
@@ -274,7 +272,7 @@ function Header({
                   <motion.img
                     src="/image/50_gold.png"
                     alt="50 Years Gold"
-                    className="absolute inset-0 w-auto h-8 sm:h-10 object-contain"
+                    className="absolute inset-0 w-auto h-7 sm:h-10 object-contain"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{
                       opacity: isScrolled || forceWhiteBackground ? 1 : 0,
@@ -293,7 +291,7 @@ function Header({
                   <img
                     src="/image/50_gold.png"
                     alt="50 Years Gold"
-                    className="absolute inset-0 w-auto h-8 sm:h-10 object-contain"
+                    className="absolute inset-0 w-auto h-7 sm:h-10 object-contain"
                     style={{
                       filter:
                         isScrolled || forceWhiteBackground
@@ -455,16 +453,15 @@ function Header({
       </nav>
 
       {/* Mobile Header */}
-      <nav className="md:hidden w-full bg-white shadow-md border-b border-gray-100">
+      <nav className="md:hidden w-full bg-transparent">
         <div className="flex items-center justify-between px-5 py-4">
           {/* Logo in Center */}
-          <div className="flex-1" />
           <Link
             href="/"
-            className="flex items-center justify-center flex-1 gap-3 transition-opacity hover:opacity-90"
+            className="flex items-center justify-start gap-3 transition-opacity hover:opacity-90"
           >
             <img
-              src="/image/logo2.png"
+              src="/image/logo.png"
               alt={logoText}
               className="h-16 w-auto transition-all duration-300"
             />
@@ -479,8 +476,8 @@ function Header({
               }}
             >
               <img
-                src="/image/50_gold.png"
-                alt="50 Years Gold"
+                src="/image/50.png"
+                alt="50 Years"
                 className="h-12 w-auto transition-all duration-300"
               />
               {/* Subtle glow effect */}
@@ -503,7 +500,7 @@ function Header({
           <div className="flex-1 flex items-center justify-end">
             {/* Hamburger Button */}
             <button
-              className="p-2.5 rounded-lg text-gray-700 hover:text-[#EC601B] hover:bg-gray-50 transition-all duration-300 active:scale-95"
+              className="p-2.5 rounded-lg text-white hover:text-white/90 hover:bg-white/10 transition-all duration-300 active:scale-95"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
