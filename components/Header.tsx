@@ -468,13 +468,13 @@ function Header({
             <img
               src="/image/logo2.png"
               alt={logoText}
-              className="h-11 w-auto transition-all duration-300"
+              className="h-14 w-auto transition-all duration-300"
             />
             <span className="h-8 w-px bg-gray-300" />
             <img
               src="/image/50_gold.png"
               alt="50 Years"
-              className="h-9 w-auto transition-all duration-300"
+              className="h-12 w-auto transition-all duration-300"
             />
           </Link>
 

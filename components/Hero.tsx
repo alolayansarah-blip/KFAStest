@@ -69,7 +69,7 @@ export default function Hero({
   return (
     <section
       ref={sectionRef}
-      className={`relative h-[130vh] md:h-[95vh] flex items-center justify-start overflow-hidden ${className}`}
+      className={`relative h-[110vh] md:h-[95vh] flex items-center justify-start overflow-hidden ${className}`}
     >
       {/* Video Background */}
       <div className="absolute inset-0 z-0">

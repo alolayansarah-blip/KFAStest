@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 
 const cards = [
   {
@@ -66,7 +67,13 @@ function CardItem({ title, index }: Card & { index: number }) {
 
 export default function FlippedCardStack() {
   return (
-    <section className="relative w-full bg-white md:bg-transparent pt-20 pb-24 -mt-32">
+    <motion.section
+      className="relative w-full bg-white md:bg-transparent pt-10 sm:pt-12 md:pt-20 pb-24 -mt-32"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+    >
       <div className="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {cards.map((card, index) => (
@@ -74,6 +81,6 @@ export default function FlippedCardStack() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
