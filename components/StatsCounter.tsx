@@ -194,7 +194,7 @@ export default function MinimalCounterSection() {
       {/* Background image */}
       <div className="absolute inset-0 bg-[url('/image/benduluim.png')] bg-cover bg-center bg-fixed" />
       {/* Orange gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#488FCC]/95 via-[#488FCC]/85 to-[#488FCC]/95" />
+      <div className="absolute inset-0 bg-[#EC601B]/90" />
       {/* Corner logo */}
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
