@@ -261,18 +261,41 @@ export default function OurImpactStories() {
           initial={{ opacity: 0, y: 20 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 flex items-end justify-between"
         >
-          <div className="inline-block mb-4">
-            <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">
+          <div>
+            <div className="inline-block mb-4">
+              <span className="text-sm font-semibold text-gray-500 uppercase tracking-widest">
+                Latest News
+              </span>
+              <div className="h-0.5 w-16 bg-[#EC601B] mt-2"></div>
+            </div>
+            
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
               Latest News
-            </span>
-            <div className="h-0.5 w-16 bg-[#EC601B] mt-2"></div>
+            </h2>
           </div>
-          
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
-            Latest News
-          </h2>
+
+          {/* View All Link */}
+          <a
+            href="#"
+            className="inline-flex items-center gap-2 text-[#EC601B] font-semibold hover:text-[#D54E0F] transition-colors duration-300 group"
+          >
+            <span>All News</span>
+            <svg
+              className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              strokeWidth={2.5}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </a>
         </motion.div>
 
         {/* News Layout */}
@@ -386,35 +409,8 @@ export default function OurImpactStories() {
             ))}
           </div>
         </div>
-
-        {/* View All Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-[#EC601B] text-white font-semibold rounded-full hover:bg-[#D54E0F] transition-colors duration-300 shadow-md hover:shadow-lg"
-          >
-            <span>View All News</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={2.5}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              />
-            </svg>
-          </a>
-        </motion.div>
       </div>
     </section>
   );
 }
+
