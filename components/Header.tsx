@@ -36,7 +36,7 @@ const DEFAULT_NAV_ITEMS: NavItem[] = [
     label: "Tech & Innovation",
     href: "/technology-and-innovation",
     children: [
-      { label: "Technology Deployment", href: "/technology-and-innovation/technology-deployment" },
+      { label: "Tech Deployment", href: "/technology-and-innovation/technology-deployment" },
       { label: "R&D in Private Sector", href: "/technology-and-innovation/RD-in-Private-Sector" },
       { label: "R&D in Public Sector", href: "/technology-and-innovation/RD-in-Public-Sector" },
       { label: "Outcomes", href: "/technology-and-innovation/Outcomes2" },
