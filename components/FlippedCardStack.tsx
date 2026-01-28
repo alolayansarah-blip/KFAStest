@@ -104,10 +104,9 @@ const cards = [
 type Card = (typeof cards)[number];
 
 function CardItem({ title, index }: Card & { index: number }) {
-  // Alternate colors: blue for even, orange for odd
-  const isBlue = index % 2 === 0;
-  const bgColor = isBlue ? "bg-[#7DC0F1]" : "bg-[#EC601B]";
-  const hoverBgColor = isBlue ? "md:hover:bg-[#5AAFE8]" : "md:hover:bg-[#D54E0F]";
+  // Use orange for all cards
+  const bgColor = "bg-[#EC601B]";
+  const hoverBgColor = "md:hover:bg-[#D54E0F]";
 
   return (
     <motion.div
